@@ -78,10 +78,10 @@ class RegisterViewController: UIViewController {
         vm.registerResultSubject
             .asObservable()
             .subscribe(onNext: { (user) in
-                if UserDefaults.standard.value(forKey: "user") != nil {
+                if self.vm.getLoggedUser() != nil {
                     self.dismissAnimated()
                 } else {
-                    UserDefaults.standard.set(user.email, forKey: "user")
+                    self.vm.setLoggedUser(user.email)
                     let sb = UIStoryboard(name: "Home", bundle: nil)
                     guard let vc = sb.instantiateInitialViewController() else {return}
                     self.present(vc, animated: true, completion: nil)

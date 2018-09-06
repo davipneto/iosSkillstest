@@ -12,6 +12,10 @@
 		53080E5F213EE2D3008FAB7F /* CINQTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53080E5D213EE2D3008FAB7F /* CINQTest.xcdatamodeld */; };
 		53080E61213EE2D5008FAB7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53080E60213EE2D5008FAB7F /* Assets.xcassets */; };
 		53080E64213EE2D5008FAB7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53080E62213EE2D5008FAB7F /* LaunchScreen.storyboard */; };
+		532C15692140D4C200FB1B0D /* AlbumsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C15682140D4C200FB1B0D /* AlbumsViewModel.swift */; };
+		532C156E2140DA5300FB1B0D /* LoggedUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C156D2140DA5300FB1B0D /* LoggedUserService.swift */; };
+		532C15702140DCD700FB1B0D /* RealmService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C156F2140DCD700FB1B0D /* RealmService.swift */; };
+		532C15722140E4CE00FB1B0D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532C15712140E4CE00FB1B0D /* Constants.swift */; };
 		537B0DE6213F3A600035F944 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 537B0DE5213F3A600035F944 /* Home.storyboard */; };
 		537B0DEA213F3F3B0035F944 /* AlbumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 537B0DE9213F3F3B0035F944 /* AlbumCell.xib */; };
 		537B0DEC213F40550035F944 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 537B0DEB213F40550035F944 /* UserCell.xib */; };
@@ -39,6 +43,10 @@
 		53080E60213EE2D5008FAB7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53080E63213EE2D5008FAB7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53080E65213EE2D5008FAB7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		532C15682140D4C200FB1B0D /* AlbumsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewModel.swift; sourceTree = "<group>"; };
+		532C156D2140DA5300FB1B0D /* LoggedUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedUserService.swift; sourceTree = "<group>"; };
+		532C156F2140DCD700FB1B0D /* RealmService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmService.swift; sourceTree = "<group>"; };
+		532C15712140E4CE00FB1B0D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		537B0DE5213F3A600035F944 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		537B0DE9213F3F3B0035F944 /* AlbumCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumCell.xib; sourceTree = "<group>"; };
 		537B0DEB213F40550035F944 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
@@ -99,16 +107,27 @@
 		53080E55213EE2D3008FAB7F /* CINQTest */ = {
 			isa = PBXGroup;
 			children = (
+				532C156A2140D57F00FB1B0D /* Services */,
 				537B0E00213F72450035F944 /* Extensions */,
 				537B0DED213F45A70035F944 /* Model */,
 				537B0DEE213F45AE0035F944 /* View */,
 				537B0DEF213F45B30035F944 /* ViewModel */,
 				537B0DF0213F45DE0035F944 /* Utils */,
+				53080E56213EE2D3008FAB7F /* AppDelegate.swift */,
 				53080E60213EE2D5008FAB7F /* Assets.xcassets */,
 				53080E65213EE2D5008FAB7F /* Info.plist */,
 				53080E5D213EE2D3008FAB7F /* CINQTest.xcdatamodeld */,
 			);
 			path = CINQTest;
+			sourceTree = "<group>";
+		};
+		532C156A2140D57F00FB1B0D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				532C156D2140DA5300FB1B0D /* LoggedUserService.swift */,
+				532C156F2140DCD700FB1B0D /* RealmService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		537B0DED213F45A70035F944 /* Model */ = {
@@ -136,6 +155,7 @@
 				537B0DF8213F4D9B0035F944 /* HomeViewModel.swift */,
 				537B0DFE213F5ADC0035F944 /* RegisterViewModel.swift */,
 				537F0466213FAAAC00EB933E /* LoginViewModel.swift */,
+				532C15682140D4C200FB1B0D /* AlbumsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -143,7 +163,7 @@
 		537B0DF0213F45DE0035F944 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				53080E56213EE2D3008FAB7F /* AppDelegate.swift */,
+				532C15712140E4CE00FB1B0D /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -333,9 +353,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				537B0DF7213F48420035F944 /* UserTableViewCell.swift in Sources */,
+				532C15702140DCD700FB1B0D /* RealmService.swift in Sources */,
 				53080E5F213EE2D3008FAB7F /* CINQTest.xcdatamodeld in Sources */,
 				537B0DFD213F59ED0035F944 /* RegisterViewController.swift in Sources */,
 				537B0DFF213F5ADC0035F944 /* RegisterViewModel.swift in Sources */,
+				532C156E2140DA5300FB1B0D /* LoggedUserService.swift in Sources */,
 				537B0E04213F759E0035F944 /* AlbumsViewController.swift in Sources */,
 				537B0E02213F72560035F944 /* ExtensionsViewController.swift in Sources */,
 				537F0467213FAAAC00EB933E /* LoginViewModel.swift in Sources */,
@@ -346,6 +368,8 @@
 				537B0DF5213F46880035F944 /* HomeViewController.swift in Sources */,
 				537F0465213FA59B00EB933E /* LoginViewController.swift in Sources */,
 				537F0463213F8E8400EB933E /* AlbumTableViewCell.swift in Sources */,
+				532C15692140D4C200FB1B0D /* AlbumsViewModel.swift in Sources */,
+				532C15722140E4CE00FB1B0D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

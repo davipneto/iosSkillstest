@@ -9,12 +9,10 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import Alamofire
-import RxAlamofire
-import RxAlamofire_ObjectMapper
 
 class AlbumsViewController: UIViewController {
     
+    let vm = AlbumsViewModel()
     let disposeBag = DisposeBag()
     
     @IBOutlet weak var tableView: UITableView!
@@ -33,11 +31,7 @@ class AlbumsViewController: UIViewController {
     }
     
     private func bind() {
-        let stringUrl = "https://jsonplaceholder.typicode.com/photos"
-        guard let url = URL(string: stringUrl) else {return}
-        let urlRequest = URLRequest(url: url)
-        requestJSON(urlRequest)
-            .mappableArray(as: Album.self)
+        vm.albumsObs
             .bind(to: tableView.rx.items(cellIdentifier: AlbumTableViewCell.identifier, cellType: AlbumTableViewCell.self)) {
                 row, album, cell in
                 cell.album = album

@@ -46,38 +46,31 @@ class RegisterViewModel: NSObject {
             .disposed(by: disposeBag)
     }
     
+    func getLoggedUser() -> String? {
+        return LoggedUserService.shared.getLoggedUserEmail()
+    }
+    
+    func setLoggedUser(_ email: String) {
+        LoggedUserService.shared.setLoggedUserEmail(email)
+    }
+    
     func verifyCredentials(credentials: RegisterCredentials) -> String? {
         if credentials.email.isEmpty || credentials.name.isEmpty || credentials.password.isEmpty {
-            return "Todos os campos são obrigatórios!"
+            return Constants.Errors.allFieldsRequired
         }
-        let realm = try! Realm()
+        let realm = RealmService.shared
         if let u = self.user {
-            do {
-                try realm.write {
-                    u.name = credentials.name
-                    u.password = credentials.password
-                }
-            } catch let error {
-                return error.localizedDescription
-            }
-            return nil
+            return realm.updateUser(user: u, name: credentials.name, password: credentials.password)?.localizedDescription
         }
-        if realm.object(ofType: User.self, forPrimaryKey: credentials.email) != nil {
-            return "Esse e-mail já está cadastrado no sistema"
+        if realm.getUser(email: credentials.email) != nil {
+            return Constants.Errors.emailAlreadyUsed
         }
         let user = User()
         user.name = credentials.name
         user.email = credentials.email
         user.password = credentials.password
-        do {
-            try realm.write {
-                realm.add(user)
-            }
-            self.user = user
-            return nil
-        } catch let error {
-            return error.localizedDescription
-        }
+        self.user = user
+        return realm.addUser(user: user)?.localizedDescription
     }
 }
 

@@ -12,15 +12,16 @@ import RxRealm
 
 class HomeViewModel: NSObject {
     
-    var realm: Realm
-    var users: Observable<(AnyRealmCollection<User>, RealmChangeset?)>
+    var users: Observable<(AnyRealmCollection<User>, RealmChangeset?)> = Observable.never()
     let searchText = Variable<String>("")
-    var filteredUsers: Observable<[User]>
+    var filteredUsers: Observable<[User]> = Observable.never()
+    var loggedEmailObserver: Observable<String> = Observable.never()
     
     override init() {
-        realm = try! Realm()
+        let realm = RealmService.shared
+        guard let usersChangeset = realm.getUsersChangeset() else {return}
         users = Observable
-            .changeset(from: realm.objects(User.self))
+            .changeset(from: usersChangeset)
             .share()
         filteredUsers = Observable.combineLatest(searchText.asObservable(), users) {
             (text, usersChangeSet) in
@@ -35,6 +36,15 @@ class HomeViewModel: NSObject {
             }
             return filtUsers
         }
+        loggedEmailObserver = LoggedUserService.shared.userObservable
+            .map {
+                if $0 == nil {
+                    return ""
+                }
+                let user = realm.getUser(email: $0)
+                let name = user?.name ?? ""
+                return "Olá, " + name
+            }        
     }
     
 }

@@ -45,18 +45,17 @@ class LoginViewModel: NSObject {
     
     private func verifyCredentials(credentials: LoginCredentials) -> String? {
         if credentials.email.isEmpty {
-            return "Digite um e-mail"
+            return Constants.Errors.typeYourEmail
         }
-        let realm = try! Realm()
-        let user = realm.object(ofType: User.self, forPrimaryKey: credentials.email)
+        let user = RealmService.shared.getUser(email: credentials.email)
         guard let us = user else {
-            return "Usuário não existe"
+            return Constants.Errors.userDoesNotExist
         }
         if us.password == credentials.password {
-            UserDefaults.standard.set(us.email, forKey: "user")
+            LoggedUserService.shared.setLoggedUserEmail(us.email)
             return nil
         } else {
-            return "Senha inválida"
+            return Constants.Errors.invalidPassword
         }
     }
     

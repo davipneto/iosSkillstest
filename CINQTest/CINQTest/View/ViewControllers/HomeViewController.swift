@@ -88,17 +88,7 @@ class HomeViewController: UIViewController {
     }
     
     private func bindUserLabel() {
-        let realm = try! Realm()
-        UserDefaults.standard.rx
-            .observe(String.self, "user")
-            .map({ (email) -> String in
-                if email == nil {
-                    return ""
-                }
-                let user = realm.object(ofType: User.self, forPrimaryKey: email)
-                let name = user?.name ?? ""
-                return "Olá, " + name
-            })
+        vm.loggedEmailObserver
             .bind(to: self.userLabel.rx.text)
             .disposed(by: disposeBag)
     }
