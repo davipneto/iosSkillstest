@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="120" id="iHs-46-f43" customClass="UserTableViewCell" customModule="CINQTest" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iHs-46-f43" id="frG-jV-H5L">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGs-73-9sW">
+                        <rect key="frame" x="24" y="27" width="45" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VfE-zy-EeB">
+                        <rect key="frame" x="24" y="72" width="41" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ROJ-Ka-HTV">
+                        <rect key="frame" x="303" y="50" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="gMp-1Q-Asz"/>
+                            <constraint firstAttribute="width" secondItem="ROJ-Ka-HTV" secondAttribute="height" multiplier="1:1" id="sQM-Bk-ZFB"/>
+                        </constraints>
+                        <state key="normal" title="Edit" image="edit"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtV-mt-aDr">
+                        <rect key="frame" x="339" y="50" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="KtV-mt-aDr" secondAttribute="height" multiplier="1:1" id="OMf-I0-YaZ"/>
+                            <constraint firstAttribute="height" constant="20" id="OZy-F6-Ceu"/>
+                        </constraints>
+                        <state key="normal" title="Delete" image="delete"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="VfE-zy-EeB" secondAttribute="bottom" constant="16" id="9eq-vf-TjN"/>
+                    <constraint firstItem="KtV-mt-aDr" firstAttribute="centerY" secondItem="frG-jV-H5L" secondAttribute="centerY" id="GXM-PA-JtC"/>
+                    <constraint firstItem="UGs-73-9sW" firstAttribute="top" secondItem="frG-jV-H5L" secondAttribute="topMargin" constant="16" id="JyK-aP-QXR"/>
+                    <constraint firstItem="VfE-zy-EeB" firstAttribute="leading" secondItem="UGs-73-9sW" secondAttribute="leading" id="P3c-Um-4cJ"/>
+                    <constraint firstItem="KtV-mt-aDr" firstAttribute="leading" secondItem="ROJ-Ka-HTV" secondAttribute="trailing" constant="16" id="U8x-v9-TyB"/>
+                    <constraint firstItem="ROJ-Ka-HTV" firstAttribute="centerY" secondItem="frG-jV-H5L" secondAttribute="centerY" id="UOH-1N-t73"/>
+                    <constraint firstAttribute="trailing" secondItem="KtV-mt-aDr" secondAttribute="trailing" constant="16" id="bTt-ee-6yl"/>
+                    <constraint firstItem="UGs-73-9sW" firstAttribute="leading" secondItem="frG-jV-H5L" secondAttribute="leadingMargin" constant="8" id="jBQ-jZ-dMW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="deleteButton" destination="KtV-mt-aDr" id="Y8v-YN-mh5"/>
+                <outlet property="editButton" destination="ROJ-Ka-HTV" id="zli-vw-wQ6"/>
+                <outlet property="emailLabel" destination="VfE-zy-EeB" id="ZOl-ZH-Zfu"/>
+                <outlet property="nameLabel" destination="UGs-73-9sW" id="qw9-Zo-ean"/>
+            </connections>
+            <point key="canvasLocation" x="97.5" y="78"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="delete" width="23" height="30"/>
+        <image name="edit" width="30" height="30"/>
+    </resources>
+</document>
