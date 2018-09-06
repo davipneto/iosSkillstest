@@ -1,7 +1,7 @@
 # Teste IOS da CINQ do Davi!
 
 Olá! Neste repositório está o projeto no meu teste do app pedido.
-Utilizei Realm e UserDefaults para a persistência de dados e também alguns pods para esse teste (já está sendo enviada a pasta com os pods junto, então não é necessário executar o pod install).
+Utilizei Realm e UserDefaults para a persistência de dados e também alguns pods para esse teste (já está sendo enviada a pasta com os pods junto, então não é necessário executar o pod install). Somente será necessário abrir o arquivo .xcworkspace ao invés do .xcodeproj.
 Para adicionar um usuário na tela inicial, foi inserido um botão com símbolo "+" à direita da Navigation Bar, e para editar/excluir um usuário, foram colcados botões nas próprias células da table view.
 Foi utilizada uma tab bar para dar as opções iniciais (Início e Álbuns).
 
