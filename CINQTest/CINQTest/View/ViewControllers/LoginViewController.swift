@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
+        configureTapToHideKeyboard()
     }
     
     ///METHODS
@@ -68,6 +69,23 @@ class LoginViewController: UIViewController {
                 self.showAlert(title: "Erro", desc: error)
             })
             .disposed(by: disposeBag)
+        
+        passwordTextField.rx
+            .controlEvent(.editingDidEndOnExit)
+            .subscribe(onNext: { _ in
+                self.loginButton.sendActions(for: .touchUpInside)
+            })
+            .disposed(by: disposeBag)
+        
+    }
+    
+    private func configureTapToHideKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
     }
 
 }

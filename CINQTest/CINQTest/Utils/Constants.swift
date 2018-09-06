@@ -16,6 +16,7 @@ struct Constants {
         static let typeYourEmail = "Digite um e-mail"
         static let userDoesNotExist = "Usuário não existe"
         static let invalidPassword = "Senha inválida"
+        static let emptyName = "Digite um nome"
     }
     
 }

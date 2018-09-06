@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        configureTaps()
         bind()
     }
     
@@ -48,6 +49,15 @@ class HomeViewController: UIViewController {
         tableView.tableHeaderView = searchBar
         tableView.rowHeight = 100
         tableView.allowsSelection = false
+    }
+    
+    private func configureTaps() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
     }
     
     private func bind() {

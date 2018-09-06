@@ -15,6 +15,7 @@ class RegisterViewController: UIViewController {
     ///VARIABLES
     let vm = RegisterViewModel()
     let disposeBag = DisposeBag()
+    let navigationBarHeight = 64
     
     ///OUTLETS
     @IBOutlet weak var nameTextField: UITextField!
@@ -29,6 +30,7 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         verifyIfIsEditing()
         bind()
+        configureTapToHideKeyboard()
     }
     
     override func didReceiveMemoryWarning() {
@@ -75,6 +77,13 @@ class RegisterViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        self.passwordTextField.rx
+            .controlEvent(.editingDidEndOnExit)
+            .subscribe(onNext: { _ in
+                self.registerButton.sendActions(for: .touchUpInside)
+            })
+            .disposed(by: disposeBag)
+        
         vm.registerResultSubject
             .asObservable()
             .subscribe(onNext: { (user) in
@@ -95,6 +104,16 @@ class RegisterViewController: UIViewController {
                 self.showAlert(title: "Erro", desc: error)
             })
             .disposed(by: disposeBag)
+    }
+    
+    
+    private func configureTapToHideKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
     }
     
     private func dismissAnimated() {

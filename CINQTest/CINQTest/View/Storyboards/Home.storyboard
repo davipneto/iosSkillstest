@@ -34,7 +34,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Álbuns" id="Aql-Zg-3te"/>
                     <connections>
-                        <outlet property="tableView" destination="QK1-P9-Jff" id="a7C-lU-vxd"/>
+                        <outlet property="tableView" destination="QK1-P9-Jff" id="Dfo-RW-6Km"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ojI-nd-gLi" userLabel="First Responder" sceneMemberID="firstResponder"/>

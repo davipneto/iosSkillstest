@@ -55,12 +55,19 @@ class RegisterViewModel: NSObject {
     }
     
     func verifyCredentials(credentials: RegisterCredentials) -> String? {
-        if credentials.email.isEmpty || credentials.name.isEmpty || credentials.password.isEmpty {
-            return Constants.Errors.allFieldsRequired
-        }
         let realm = RealmService.shared
         if let u = self.user {
-            return realm.updateUser(user: u, name: credentials.name, password: credentials.password)?.localizedDescription
+            if credentials.name.isEmpty {
+                return Constants.Errors.emptyName
+            }
+            var pass = credentials.password
+            if credentials.password.isEmpty {
+                pass = u.password
+            }
+            return realm.updateUser(user: u, name: credentials.name, password: pass)?.localizedDescription
+        }
+        if credentials.email.isEmpty || credentials.name.isEmpty || credentials.password.isEmpty {
+            return Constants.Errors.allFieldsRequired
         }
         if realm.getUser(email: credentials.email) != nil {
             return Constants.Errors.emailAlreadyUsed
